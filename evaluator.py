@@ -84,8 +84,11 @@ except Exception as e:
     try:
         result = subprocess.run(
             [sys.executable, "-c", full_code],
-            capture_output=True, text=True, timeout=10,
-            encoding="utf-8"
+            capture_output=True,
+            text=True,
+            timeout=10,
+            encoding="utf-8",
+            errors="replace"
         )
         output = result.stdout.strip()
         stderr = result.stderr.strip()
@@ -172,9 +175,9 @@ def run_problem(problem_dir, student_file, exam_active=True):
         if test_result["passed"]:
             passed += 1
 
-    results["all_passed"]    = passed == len(tests)
-    results["passed_count"]  = passed
-    results["total_count"]   = len(tests)
+    results["all_passed"]   = passed == len(tests)
+    results["passed_count"] = passed
+    results["total_count"]  = len(tests)
 
     if not exam_active:
         solution_file = os.path.join(problem_dir, "solutions", "solution_prof.py")
@@ -203,8 +206,8 @@ def _find_tests(problem_dir):
 
 
 def _run_single_file_test(student_file, input_file, expected_file, test_num):
-    with open(input_file,   "r", encoding="utf-8") as f: stdin_data = f.read()
-    with open(expected_file, "r", encoding="utf-8") as f: expected  = f.read().strip()
+    with open(input_file,    "r", encoding="utf-8") as f: stdin_data = f.read()
+    with open(expected_file, "r", encoding="utf-8") as f: expected   = f.read().strip()
 
     try:
         result = subprocess.run(
@@ -213,7 +216,8 @@ def _run_single_file_test(student_file, input_file, expected_file, test_num):
             capture_output=True,
             text=True,
             timeout=10,
-            encoding="utf-8"
+            encoding="utf-8",
+            errors="replace"
         )
         got    = result.stdout.strip()
         stderr = result.stderr.strip()
@@ -296,13 +300,9 @@ def write_traces(traces_dir, problem_name, results, exam_active=True):
                 lines.append("  ERROR: TIMEOUT - posible bucle infinito")
             elif t.get("stderr"):
                 lines.append(f"  ERROR: {t['stderr']}")
-            if t.get("timeout"):
-                lines.append("  ERROR: TIMEOUT - posible bucle infinito")
-            elif t.get("stderr"):
-                lines.append(f"  ERROR: {t['stderr']}")
             else:
-                lines.append(f"  OBTENIDO: {str(t.get('got',''))[:200]}")
-                lines.append(f"  ESPERADO: {str(t.get('expected',''))[:200]}")
+                lines.append(f"  OBTENIDO: {str(t.get('got', ''))[:200]}")
+                lines.append(f"  ESPERADO: {str(t.get('expected', ''))[:200]}")
         lines.append("")
 
     if not exam_active and results.get("prof_diff"):

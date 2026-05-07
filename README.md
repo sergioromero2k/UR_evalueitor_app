@@ -1,19 +1,20 @@
 # EVALUEITOR
 
 Simulador de parcial para la asignatura de Diseno y Analisis de Algoritmos.
-Hecho por un estudiante, para estudiantes. Sin IA, sin servidor, sin cuenta. Solo Python.
+Hecho por un estudiante, para estudiantes. Sin IA, sin servidor, sin cuenta.
 
 ## Requisitos
 
 - Python 3.8 o superior
 - Windows (probado en Windows 10/11)
+- No he testeado para Linux, aunque se me ocurrio hacerle un MakeFile, pero preferi .bat xD.
 
 ## Instalacion
 
 Clona el repositorio y ejecuta el setup una sola vez:
 
-    git clone https://github.com/TU_USUARIO/evalueitor.git
-    cd evalueitor
+    git clone https://github.com/TU_USUARIO/UR_evalueitor_app.git
+    cd UR_evalueitor_app
     setup.bat
 
 Esto crea un entorno virtual e instala las dependencias automaticamente.
@@ -88,12 +89,22 @@ Ver cualquier test_runner.py existente como referencia.
 ## Algoritmos incluidos
 
 Parcial 1 - Grafos y Greedy:
+* Suele caer 2 de ellos, darle prioridad.
+- BFS, DFS, Dijkstra, Prim, Kruskal
+- TopSort, Lexical TopSort
+
+- Scheduling, Waiting Time, Coin Exchange
+- Greedy Knapsack, Art Points
+
+Parcial 2 - Divide y Venceras y Backtracking:
+
+* Suele caer uno de ellos.
 - BFS, DFS, Dijkstra, Prim, Kruskal
 - TopSort, Lexical TopSort
 - Scheduling, Waiting Time, Coin Exchange
 - Greedy Knapsack, Art Points
 
-Parcial 2 - Divide y Venceras y Backtracking:
+* Darle prioridad a ello.
 - Merge Sort, Quick Sort
 - Binary Search recursivo e iterativo
 - Max Vector

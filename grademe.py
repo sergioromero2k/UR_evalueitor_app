@@ -871,15 +871,56 @@ class EVALUEITOR(ctk.CTk):
                 text_color=color,
             ).pack(anchor="w", padx=10, pady=(8, 2))
 
-            diff = result.get("prof_diff", "")
-            if diff:
-                ctk.CTkLabel(
-                    card,
-                    text=f"  Diferencia con el profesor:\n{diff[:300]}",
-                    font=ctk.CTkFont("Courier New", 8),
-                    text_color=BLUE,
-                    justify="left",
-                ).pack(anchor="w", padx=14, pady=(0, 8))
+            # Soluciones
+            solutions_dir = os.path.join(prob_dir, "solutions")
+            if os.path.exists(solutions_dir):
+                sol_files = sorted(os.listdir(solutions_dir))
+                for sol_file in sol_files:
+                    if sol_file.endswith(".py"):
+                        sol_path = os.path.join(solutions_dir, sol_file)
+                        with open(sol_path, "r", encoding="utf-8") as f:
+                            sol_code = f.read()
+
+                        if "prof" in sol_file:
+                            label = "SOLUCION DEL PROFESOR"
+                            color_sol = BLUE
+                        elif "alt1" in sol_file:
+                            label = "SOLUCION ALTERNATIVA 1"
+                            color_sol = GREEN
+                        elif "alt2" in sol_file:
+                            label = "SOLUCION ALTERNATIVA 2"
+                            color_sol = ORANGE
+                        else:
+                            label = sol_file.replace(".py", "").upper()
+                            color_sol = GRAY
+
+                        ctk.CTkLabel(card,
+                                    text=f"  {label}:",
+                                    font=ctk.CTkFont("Courier New", 9, "bold"),
+                                    text_color=color_sol).pack(anchor="w", padx=10, pady=(6, 0))
+
+                        textbox = ctk.CTkTextbox(card,
+                                                font=ctk.CTkFont("Courier New", 9),
+                                                fg_color="#050505",
+                                                text_color=color_sol,
+                                                height=140,
+                                                corner_radius=4)
+                        textbox.pack(fill="x", padx=10, pady=(0, 4))
+                        textbox.insert("end", sol_code)
+                        textbox.configure(state="disabled")
+                                    # Boton copiar
+                        ctk.CTkButton(card,
+                                    text="COPIAR",
+                                    font=ctk.CTkFont("Courier New", 8, "bold"),
+                                    fg_color="transparent",
+                                    border_width=1,
+                                    border_color=color_sol,
+                                    text_color=color_sol,
+                                    width=80, height=22,
+                                    command=lambda c=sol_code: [
+                                        self.clipboard_clear(),
+                                        self.clipboard_append(c),
+                                        ]).pack(anchor="e", padx=10, pady=(0, 8))
 
         total_score = sum(
             int(
