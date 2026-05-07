@@ -607,14 +607,17 @@ class EVALUEITOR(ctk.CTk):
             self.after(0, self._time_up)
 
     def _update_timer(self):
-        h = self.seconds_left // 3600
-        m = (self.seconds_left % 3600) // 60
-        s = self.seconds_left % 60
-        self.timer_lbl.configure(text=f"{h}:{m:02d}:{s:02d}")
-        if self.seconds_left <= 300:
-            self.timer_lbl.configure(text_color=RED)
-        elif self.seconds_left <= 900:
-            self.timer_lbl.configure(text_color=ORANGE)
+        try:
+            h = self.seconds_left // 3600
+            m = (self.seconds_left % 3600) // 60
+            s = self.seconds_left % 60
+            self.timer_lbl.configure(text=f"{h}:{m:02d}:{s:02d}")
+            if self.seconds_left <= 300:
+                self.timer_lbl.configure(text_color=RED)
+            elif self.seconds_left <= 900:
+                self.timer_lbl.configure(text_color=ORANGE)
+        except Exception:
+            pass
 
     def _time_up(self):
         self.timer_running = False

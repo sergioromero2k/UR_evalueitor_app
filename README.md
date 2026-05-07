@@ -103,6 +103,6 @@ Parcial 2 - Divide y Venceras y Backtracking:
 
 > Este proyecto esta bajo una licencia restrictiva.
 > Se permite su ejecucion para fines de evaluacion academica,
-> pero esta prohibida su copia, modificacion o distribucion sin
+> pero esta prohibida su copia, modificacion sin
 > autorizacion del autor.
 > Contacto: LinkedIn - Sergio Alejandro
