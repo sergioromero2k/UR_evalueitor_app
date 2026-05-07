@@ -1,0 +1,42 @@
+Una compañía eléctrica necesita tender cable para conectar varios
+barrios de una ciudad. El objetivo es conectar todos los barrios
+gastando el mínimo cable posible. A diferencia del problema anterior,
+aquí el algoritmo debe crecer desde un nodo inicial, añadiendo
+siempre la conexión más barata que expanda la red actual.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de barrios y M el número de posibles conexiones.
+  Las siguientes M líneas contienen tres enteros U V W indicando
+  que existe una posible conexión entre el barrio U y el barrio V
+  con coste W.
+
+Salida:
+  Un entero con el coste mínimo total para conectar todos los barrios.
+
+Ejemplo de entrada:
+  4 5
+  1 2 3
+  1 3 5
+  2 3 1
+  2 4 4
+  3 4 2
+
+Ejemplo de salida:
+  6
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: grafo de 4 nodos, 5 aristas → coste 6
+    Test 01: grafo de 7 nodos, 11 aristas → coste 14
+    Test 02: grafo de 3 nodos, 3 aristas → coste 3
+    Test 03: grafo de 5 nodos, 7 aristas → coste 11
+    Test 04: grafo de 6 nodos, 9 aristas → coste 15
+    Test 05: grafo de 8 nodos, 13 aristas → coste 20
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

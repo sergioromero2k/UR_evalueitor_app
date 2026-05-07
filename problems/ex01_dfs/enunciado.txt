@@ -1,0 +1,57 @@
+Una empresa de telecomunicaciones necesita auditar su red de servidores.
+Para ello, necesita recorrer todos los servidores de la red en profundidad,
+es decir, antes de pasar al siguiente servidor del mismo nivel, debe
+explorar todos los servidores accesibles desde el actual.
+
+Si existen servidores no alcanzables desde el servidor 1, se continuará
+el recorrido desde el siguiente servidor no visitado en orden ascendente.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de servidores y M el número de conexiones entre ellos.
+  Las siguientes M líneas contienen dos enteros U y V indicando
+  que existe una conexión entre el servidor U y el servidor V.
+
+Salida:
+  Una línea por cada servidor visitado con el formato:
+  "Visiting node X"
+  donde X es el identificador del servidor.
+
+Ejemplo de entrada:
+  9 9
+  1 2
+  1 4
+  1 8
+  2 3
+  2 4
+  3 5
+  4 7
+  5 6
+  7 9
+
+Ejemplo de salida:
+  Visiting node 1
+  Visiting node 2
+  Visiting node 3
+  Visiting node 5
+  Visiting node 6
+  Visiting node 4
+  Visiting node 7
+  Visiting node 9
+  Visiting node 8
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: g con 9 nodos, 9 aristas
+    Test 01: g con 4 nodos, 4 aristas
+    Test 02: g con 6 nodos, 2 componentes
+    Test 03: g con 5 nodos sin aristas
+    Test 04: g con 10 nodos, 12 aristas
+    Test 05: g con 7 nodos, 2 componentes
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

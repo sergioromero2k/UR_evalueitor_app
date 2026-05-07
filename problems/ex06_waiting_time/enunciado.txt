@@ -1,0 +1,49 @@
+Una clínica veterinaria necesita organizar el orden de atención
+de sus pacientes para minimizar el tiempo total de espera.
+Cada mascota necesita un tiempo diferente de consulta y queremos
+que la suma total de tiempos de espera de todos los pacientes
+sea la mínima posible.
+
+El tiempo de espera de cada paciente es el tiempo acumulado
+desde que abre la clínica hasta que empieza su consulta.
+Es decir, si atendemos en orden A(5min), B(3min), C(8min):
+  - A espera 0 min (es el primero)
+  - B espera 5 min (espera a que acabe A)
+  - C espera 8 min (espera a que acaben A y B)
+  - Tiempo total de espera: 0 + 5 + 8 = 13
+
+Entrada:
+  La primera línea contiene un entero N con el número de mascotas.
+  Las siguientes N líneas contienen una cadena S y un entero T
+  indicando el nombre de la mascota y el tiempo de consulta.
+
+Salida:
+  La primera línea contiene los nombres de las mascotas en el
+  orden óptimo de atención, separados por espacios.
+  La segunda línea contiene el tiempo total de espera.
+
+Ejemplo de entrada:
+  3
+  Toby 5
+  Luna 3
+  Rocky 8
+
+Ejemplo de salida:
+  Luna Toby Rocky
+  13
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 3 mascotas → espera total 13
+    Test 01: 4 mascotas → espera total 29
+    Test 02: 5 mascotas → espera total 51
+    Test 03: 6 mascotas → espera total 95
+    Test 04: 4 mascotas mismo tiempo → espera total 30
+    Test 05: 7 mascotas → espera total 148
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

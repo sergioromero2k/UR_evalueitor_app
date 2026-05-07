@@ -1,0 +1,72 @@
+Una universidad necesita organizar el orden en el que los estudiantes
+deben cursar las asignaturas. Algunas asignaturas tienen prerequisitos,
+es decir, deben cursarse antes que otras. Dado un plan de estudios
+con sus dependencias, se pide obtener un orden válido en el que
+cursar todas las asignaturas.
+
+El algoritmo debe usar DFS con tiempos de descubrimiento y fin,
+añadiendo cada asignatura al FRENTE de la lista al terminar
+su exploración.
+
+Si el grafo contiene un ciclo (dependencia circular), el resultado
+será impredecible — se garantiza que los tests no tienen ciclos.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de asignaturas y M el número de dependencias.
+  Las siguientes N líneas contienen el nombre de cada asignatura
+  en orden (asignatura 0, asignatura 1, ...).
+  Las siguientes M líneas contienen dos enteros U V indicando
+  que la asignatura U debe cursarse ANTES que la asignatura V.
+
+Salida:
+  Una línea con los nombres de las asignaturas en un orden
+  topológico válido, separados por espacios.
+  NOTA: hay múltiples órdenes válidos, el evaluador comprueba
+  que tu orden respete todas las dependencias, no que sea
+  idéntico a uno concreto.
+
+Ejemplo de entrada:
+  6 5
+  calcetines
+  pantalon
+  camisa
+  zapatos
+  cinturon
+  jersey
+  0 3
+  1 3
+  1 4
+  2 4
+  2 5
+
+Ejemplo de salida (una solución válida):
+  camisa pantalon calcetines jersey cinturon zapatos
+
+Otras soluciones también válidas:
+  calcetines pantalon camisa cinturon jersey zapatos
+  camisa jersey pantalon cinturon calcetines zapatos
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 6 asignaturas, 5 dependencias
+             solución ejemplo: camisa pantalon calcetines jersey cinturon zapatos
+    Test 01: 4 asignaturas, 3 dependencias
+             solución ejemplo: fisica matematicas programacion algoritmos
+    Test 02: 5 asignaturas, 6 dependencias
+             solución ejemplo: A B C D E
+    Test 03: 7 asignaturas, 7 dependencias
+             solución ejemplo: G1 G2 G3 G4 G5 G6 G7
+    Test 04: 3 asignaturas sin dependencias
+             solución ejemplo: Alpha Beta Gamma
+    Test 05: 8 asignaturas, 9 dependencias
+             solución ejemplo: T1 T2 T3 T4 T5 T6 T7 T8
+
+  ⚠ Si entregas main() o input() → KO automático
+  ⚠ El evaluador valida que tu orden respete las dependencias,
+    no que sea idéntico al ejemplo
+─────────────────────────────────────────────────────

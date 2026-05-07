@@ -1,0 +1,49 @@
+Una empresa de telecomunicaciones necesita identificar los servidores
+críticos de su red. Un servidor es crítico (punto de articulación)
+si al eliminarlo la red queda desconectada, es decir, hay al menos
+un par de servidores que dejan de poder comunicarse entre sí.
+
+Dado el mapa de la red, se pide encontrar todos los servidores
+críticos y devolverlos ordenados de menor a mayor identificador.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de servidores (identificados del 0 al N-1) y M el número de
+  conexiones entre ellos.
+  Las siguientes M líneas contienen dos enteros U V indicando
+  que existe una conexión entre el servidor U y el servidor V.
+
+Salida:
+  Una línea con los identificadores de los servidores críticos
+  ordenados de menor a mayor, separados por espacios.
+  Si no hay ningún servidor crítico, imprime una línea vacía.
+
+Ejemplo de entrada:
+  8 8
+  0 1
+  0 2
+  0 3
+  1 2
+  1 4
+  1 5
+  3 6
+  3 7
+
+Ejemplo de salida:
+  1 3
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 8 servidores, 8 conexiones → puntos 1 3
+    Test 01: red lineal 5 nodos → todos excepto extremos
+    Test 02: red completamente conexa → ningún punto crítico
+    Test 03: 7 servidores, 7 conexiones → varios puntos críticos
+    Test 04: red con un solo puente → un punto crítico
+    Test 05: 9 servidores, 10 conexiones → varios puntos críticos
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

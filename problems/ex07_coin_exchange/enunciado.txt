@@ -1,0 +1,41 @@
+Una casa de cambio de divisas necesita devolver el cambio exacto
+a sus clientes usando el menor número de monedas posible.
+Dado un valor a devolver y una lista de monedas disponibles
+ordenadas de mayor a menor, se pide calcular cuántas monedas
+de cada tipo se necesitan para devolver el cambio exacto.
+
+Entrada:
+  La primera línea contiene un número (entero o decimal)
+  con el valor a devolver.
+  La segunda línea contiene un entero M con el número de
+  tipos de moneda disponibles.
+  La tercera línea contiene M números ordenados de mayor
+  a menor con el valor de cada tipo de moneda.
+
+Salida:
+  Una línea con la cantidad de monedas de cada tipo
+  necesarias para devolver el cambio, separadas por espacios.
+
+Ejemplo de entrada:
+  87
+  9
+  50 20 10 5 2 1 0.5 0.2 0.1
+
+Ejemplo de salida:
+  1 1 1 1 1 0 0 0 0
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: valor 87, monedas [50,20,10,5,2,1,...] → 1 1 1 1 1 0 0 0 0
+    Test 01: valor 4, monedas estándar → cambio exacto
+    Test 02: valor 27, monedas [10,5,1] → 2 1 2
+    Test 03: valor 0.75, monedas decimales → cambio exacto
+    Test 04: valor 163, monedas estándar → cambio exacto
+    Test 05: valor 99, monedas [50,20,10,5,2,1] → cambio exacto
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

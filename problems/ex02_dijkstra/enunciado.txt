@@ -1,0 +1,49 @@
+Un sistema de navegación GPS necesita calcular las rutas más cortas
+entre distintos puntos de una ciudad. Dado un mapa de la ciudad con
+sus intersecciones y las distancias entre ellas, se pide calcular
+la distancia mínima desde un punto de origen al resto de puntos.
+
+Las conexiones son de sentido único (grafo dirigido).
+Si un punto no es alcanzable desde el origen, su distancia será 1061109567
+(0x3f3f3f3f).
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de intersecciones y M el número de conexiones.
+  La segunda línea contiene un entero S, el punto de origen.
+  Las siguientes M líneas contienen tres enteros U V W indicando
+  que existe una conexión dirigida de U a V con distancia W.
+
+Salida:
+  Una línea con las distancias mínimas desde S a cada nodo
+  (desde el nodo 1 hasta el nodo N), separadas por espacios.
+  El nodo origen tiene distancia 0.
+
+Ejemplo de entrada:
+  5 5
+  1
+  1 2 5
+  1 4 3
+  2 5 1
+  4 2 1
+  4 3 11
+  4 5 6
+
+Ejemplo de salida:
+  0 4 14 3 5
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: grafo de 5 nodos, origen nodo 1
+    Test 01: grafo lineal de 4 nodos, origen nodo 1
+    Test 02: grafo de 6 nodos con nodos inalcanzables
+    Test 03: grafo de 3 nodos, origen nodo 2
+    Test 04: grafo de 7 nodos, origen nodo 1
+    Test 05: grafo de 8 nodos con múltiples caminos
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

@@ -1,0 +1,47 @@
+Se tiene una red de ciudades conectadas entre sí por carreteras.
+Dada la red, se pide recorrerla visitando todas las ciudades posibles
+partiendo desde la ciudad 1, explorando primero las ciudades más cercanas
+antes de profundizar. Si existen ciudades no alcanzables desde la ciudad 1,
+se continuará el recorrido desde la siguiente ciudad no visitada
+en orden ascendente.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de ciudades y M el número de carreteras.
+  Las siguientes M líneas contienen dos enteros U y V indicando
+  que existe una carretera entre la ciudad U y la ciudad V.
+
+Salida:
+  Una línea con los identificadores de las ciudades en el orden
+  en que son visitadas, separados por espacios.
+
+Ejemplo de entrada:
+  9 9
+  1 2
+  1 4
+  1 8
+  2 3
+  2 4
+  3 5
+  4 7
+  5 6
+  7 9
+
+Ejemplo de salida:
+  1 2 4 8 3 7 5 9 6
+
+  ─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: g con 9 nodos, 9 aristas → salida: 1 2 4 8 3 7 5 9 6
+    Test 01: g con 4 nodos, 4 aristas → salida: 1 2 3 4
+    Test 02: g con 6 nodos, 2 componentes → salida: 1 2 3 4 5 6
+    Test 03: g con 5 nodos sin aristas → salida: 1 2 3 4 5
+    Test 04: g con 10 nodos, 12 aristas → salida: 1 2 4 8 3 7 9 5 6 10
+    Test 05: g con 7 nodos, 2 componentes → salida: 1 2 3 4 5 6 7
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

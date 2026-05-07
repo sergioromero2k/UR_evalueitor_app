@@ -1,0 +1,55 @@
+Una plataforma de cursos online necesita mostrar el orden de estudio
+de sus cursos. Al igual que el problema anterior, hay dependencias
+entre cursos, pero esta vez el orden debe ser único y determinista:
+cuando hay varios cursos disponibles a la vez, siempre se elige
+el de menor identificador numérico.
+
+Si existe un ciclo en las dependencias, imprime -1.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de cursos (identificados del 0 al N-1) y M el número de dependencias.
+  Las siguientes M líneas contienen dos enteros U V indicando
+  que el curso U debe completarse ANTES que el curso V.
+
+Salida:
+  Una línea con los identificadores de los cursos en orden
+  topológico lexicográfico, separados por espacios.
+  Si hay ciclo, imprime -1.
+
+Ejemplo de entrada:
+  5 6
+  0 2
+  2 4
+  0 1
+  1 2
+  0 4
+  2 3
+
+Ejemplo de salida:
+  0 1 2 3 4
+
+Ejemplo con ciclo:
+  3 3
+  0 1
+  1 2
+  2 0
+
+Salida:
+  -1
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 5 cursos, 6 dependencias → 0 1 2 3 4
+    Test 01: 4 cursos, 3 dependencias → 0 1 2 3
+    Test 02: 6 cursos, 7 dependencias → orden lexicográfico
+    Test 03: 3 cursos con ciclo → -1
+    Test 04: 7 cursos, 8 dependencias → orden lexicográfico
+    Test 05: 5 cursos sin dependencias → 0 1 2 3 4
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

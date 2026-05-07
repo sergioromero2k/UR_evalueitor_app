@@ -1,0 +1,46 @@
+Una productora de televisión necesita organizar el calendario de
+grabaciones para maximizar los beneficios. Cada programa tiene
+asignado un beneficio económico y una fecha límite de grabación.
+Solo se puede grabar un programa por día y cada programa ocupa
+exactamente un día. El objetivo es seleccionar qué programas grabar
+y en qué día para maximizar el beneficio total.
+
+Entrada:
+  La primera línea contiene un entero N con el número de programas.
+  Las siguientes N líneas contienen una cadena S, un entero B y
+  un entero D, indicando el nombre del programa, su beneficio
+  y su fecha límite (día máximo en el que puede grabarse).
+  Los días empiezan en 1.
+
+Salida:
+  La primera línea contiene el beneficio total obtenido.
+  Las siguientes líneas contienen los programas seleccionados
+  en formato "DIA D: NOMBRE" ordenados por día ascendente.
+
+Ejemplo de entrada:
+  4
+  Supervivientes 50 2
+  GranHermano 10 1
+  LaVoz 15 2
+  MasterChef 30 1
+
+Ejemplo de salida:
+  80
+  DIA 1: MasterChef
+  DIA 2: Supervivientes
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 4 programas, 2 días → beneficio 80
+    Test 01: 5 programas, 3 días → beneficio 155
+    Test 02: 6 programas, 3 días → beneficio 210
+    Test 03: 3 programas mismo deadline → beneficio 50
+    Test 04: 8 programas, 4 días → beneficio 280
+    Test 05: 10 programas, 5 días → beneficio 370
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────
