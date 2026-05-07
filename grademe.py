@@ -28,9 +28,10 @@ BG = "#0a0a0a"
 class EVALUEITOR(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("EVALUEITOR v2.0 — DAA GIS 25-26")
-        self.geometry("960x640")
-        self.minsize(860, 580)
+        self.title("Confía en lo que sabes, ¡tú puedes!")
+        self.iconbitmap("./assets/panda.ico")
+        self.geometry("300x550")
+        self.minsize(420, 550)
         self.configure(fg_color="#0d0d0d")
 
         self.mode = None
@@ -51,19 +52,18 @@ class EVALUEITOR(ctk.CTk):
         self._clear()
         self.unbind("<FocusOut>")
 
-        # Logo
         ctk.CTkLabel(
             self,
             text="EVALUEITOR",
-            font=ctk.CTkFont("Courier New", 42, "bold"),
+            font=ctk.CTkFont("Courier New", 34, "bold"),
             text_color=GREEN,
-        ).pack(pady=(30, 0))
+        ).pack(pady=(16, 0))
         ctk.CTkLabel(
             self,
-            text="SIMULADOR DE PARCIAL  •  DAA GIS 25-26",
-            font=ctk.CTkFont("Courier New", 10),
+            text="===== SIMULADOR DE PARCIAL =====",
+            font=ctk.CTkFont("Courier New", 12),
             text_color=GRAY,
-        ).pack(pady=(2, 16))
+        ).pack(pady=(2, 10))
 
         # Reglas
         rules_frame = ctk.CTkFrame(
@@ -73,45 +73,45 @@ class EVALUEITOR(ctk.CTk):
             border_width=1,
             border_color="#003311",
         )
-        rules_frame.pack(fill="x", padx=40, pady=(0, 16))
+        rules_frame.pack(fill="x", padx=30, pady=(0, 10))
 
         ctk.CTkLabel(
             rules_frame,
-            text="⚠  REGLAS DEL EXAMEN",
-            font=ctk.CTkFont("Courier New", 10, "bold"),
-            text_color=RED,
-        ).pack(anchor="w", padx=14, pady=(10, 4))
+            text="REGLAS",
+            font=ctk.CTkFont("Courier New", 9, "bold"),
+            text_color=BLUE,
+        ).pack(anchor="w", padx=12, pady=(6, 2))
 
         for r in [
             "• Tiempo: 1h 30min  |  5 problemas aleatorios",
             "• Tus soluciones van en:  entregable/ex00/ex00.py",
-            "• Sin main() ni input() → KO automático",
-            "• Salir de la ventana = infracción registrada",
-            "• Las soluciones del profesor se muestran solo al terminar",
+            "• Sin main() ni input() → KO automatico",
+            "• Salir de la ventana = infraccion registrada",
+            "• Soluciones del profesor solo al terminar",
         ]:
             ctk.CTkLabel(
                 rules_frame,
                 text=r,
-                font=ctk.CTkFont("Courier New", 9),
-                text_color="#cc4444",
-            ).pack(anchor="w", padx=20, pady=1)
-        ctk.CTkLabel(rules_frame, text="").pack(pady=3)
+                font=ctk.CTkFont("Courier New", 8),
+                text_color="#00add9",
+            ).pack(anchor="w", padx=16, pady=1)
+        ctk.CTkLabel(rules_frame, text="").pack(pady=2)
 
         # Modos
         ctk.CTkLabel(
             self,
-            text="ELIGE MODO DE EXAMEN:",
-            font=ctk.CTkFont("Courier New", 11, "bold"),
+            text="==== ELIGE MODO ====",
+            font=ctk.CTkFont("Courier New", 15, "bold"),
             text_color=GREEN,
-        ).pack(pady=(0, 10))
+        ).pack(pady=(0, 8))
 
         btn_frame = ctk.CTkFrame(self, fg_color="transparent")
-        btn_frame.pack()
+        btn_frame.pack(pady=(0, 10))
 
         for tag, name, desc, color, mode in [
-            ("P1", "PARCIAL 1", "Grafos + Greedy", BLUE, "p1"),
-            ("P2", "PARCIAL 2", "DyV + Backtracking", ORANGE, "p2"),
-            ("??", "MODO LIBRE", "Todo aleatorio", GREEN, "libre"),
+            ("P1", "PARCIAL 1", "Grafos + Greedy", GREEN, "p1"),
+            ("P2", "PARCIAL 2", "DyV + Backtracking", RED, "p2"),
+            ("AZAR", "MODO LIBRE", "Todo aleatorio", BLUE, "libre"),
         ]:
             f = ctk.CTkFrame(
                 btn_frame,
@@ -120,33 +120,33 @@ class EVALUEITOR(ctk.CTk):
                 border_width=1,
                 border_color="#333333",
             )
-            f.pack(side="left", padx=8, ipadx=6, ipady=6)
+            f.pack(side="left", padx=6, ipadx=4, ipady=4)
 
             ctk.CTkLabel(
                 f,
                 text=f"[{tag}]",
-                font=ctk.CTkFont("Courier New", 20, "bold"),
+                font=ctk.CTkFont("Courier New", 16, "bold"),
                 text_color=color,
-            ).pack(pady=(14, 2))
+            ).pack(pady=(10, 2))
             ctk.CTkLabel(
                 f,
                 text=name,
-                font=ctk.CTkFont("Courier New", 11, "bold"),
+                font=ctk.CTkFont("Courier New", 10, "bold"),
                 text_color=color,
             ).pack()
             ctk.CTkLabel(
-                f, text=desc, font=ctk.CTkFont("Courier New", 9), text_color=GRAY
-            ).pack(pady=(4, 10))
+                f, text=desc, font=ctk.CTkFont("Courier New", 8), text_color=GRAY
+            ).pack(pady=(2, 8))
             ctk.CTkButton(
                 f,
                 text="INICIAR",
                 fg_color=color,
                 text_color="#000000",
-                font=ctk.CTkFont("Courier New", 9, "bold"),
-                width=100,
-                height=28,
+                font=ctk.CTkFont("Courier New", 8, "bold"),
+                width=90,
+                height=24,
                 command=lambda m=mode: self._start_exam(m),
-            ).pack(pady=(0, 14))
+            ).pack(pady=(0, 10))
 
     # ─────────────────────────────────────────────
     #  INICIAR EXAMEN
@@ -184,6 +184,11 @@ class EVALUEITOR(ctk.CTk):
             "nqueens",
             "coloreado",
             "laberinto",
+            "bfs",
+            "dfs",
+            "dijkstra",
+            "prim",
+            "kruskal",
         ]
         if mode == "p1":
             pool = [p for p in all_p if any(t in p.lower() for t in p1)]
@@ -196,6 +201,9 @@ class EVALUEITOR(ctk.CTk):
         return pool[:5] if len(pool) >= 5 else pool
 
     def _start_exam(self, mode):
+        # Agrandar ventana al iniciar examen
+        self.geometry("1100x700")
+        self.minsize(900, 600)
         self.mode = mode
         self.selected_problems = self._get_problems(mode)
 
@@ -265,7 +273,7 @@ class EVALUEITOR(ctk.CTk):
             top,
             text=" EVALUEITOR",
             font=ctk.CTkFont("Courier New", 13, "bold"),
-            text_color=GREEN,
+            text_color=BLUE,
         ).pack(side="left", padx=12)
 
         mode_colors = {"p1": BLUE, "p2": ORANGE, "libre": GREEN}
@@ -527,6 +535,10 @@ class EVALUEITOR(ctk.CTk):
                 code = f.read()
             self.anticheat.check_code(code)
 
+            if len(self.anticheat.violations) >= 3:
+                self.after(0, self._exam_anulado)
+                return
+
             runner_file = os.path.join(prob_dir, "test_runner.py")
             if os.path.exists(runner_file):
                 result = self._run_with_runner(runner_file, py_file, prob_dir)
@@ -564,6 +576,66 @@ class EVALUEITOR(ctk.CTk):
 
         self._log("─" * 55)
 
+    def _exam_anulado(self):
+        self.timer_running = False
+        self.exam_active = False
+        self.unbind("<FocusOut>")
+        self.geometry("720x480")
+        self._clear()
+
+        ctk.CTkLabel(
+            self,
+            text="EXAMEN ANULADO",
+            font=ctk.CTkFont("Courier New", 36, "bold"),
+            text_color=RED,
+        ).pack(pady=(60, 10))
+        ctk.CTkLabel(
+            self,
+            text="Se han detectado infracciones graves.",
+            font=ctk.CTkFont("Courier New", 11),
+            text_color=GRAY,
+        ).pack()
+        ctk.CTkLabel(
+            self,
+            text="SUSPENSO — Trampa detectada",
+            font=ctk.CTkFont("Courier New", 13, "bold"),
+            text_color=RED,
+        ).pack(pady=(16, 0))
+
+        vf = ctk.CTkFrame(
+            self, fg_color="#220000", corner_radius=8, border_width=1, border_color=RED
+        )
+        vf.pack(padx=40, pady=16, fill="x")
+        ctk.CTkLabel(
+            vf,
+            text="INFRACCIONES:",
+            font=ctk.CTkFont("Courier New", 9, "bold"),
+            text_color=RED,
+        ).pack(anchor="w", padx=12, pady=(8, 4))
+        for v in self.anticheat.violations:
+            ctk.CTkLabel(
+                vf,
+                text=f"  • {v}",
+                font=ctk.CTkFont("Courier New", 9),
+                text_color="#cc4444",
+            ).pack(anchor="w", padx=16)
+        ctk.CTkLabel(vf, text="").pack(pady=4)
+
+        ctk.CTkButton(
+            self,
+            text="↩  NUEVO EXAMEN",
+            fg_color=RED,
+            text_color="#fff",
+            font=ctk.CTkFont("Courier New", 10, "bold"),
+            width=160,
+            height=34,
+            command=lambda: [
+                self.geometry("720x480"),
+                self.minsize(680, 440),
+                self._build_home(),
+            ],
+        ).pack(pady=16)
+
     def _run_with_runner(self, runner_file, student_file, prob_dir):
         import importlib.util
         import sys
@@ -574,13 +646,14 @@ class EVALUEITOR(ctk.CTk):
                 del sys.modules[key]
 
         spec = importlib.util.spec_from_file_location(
-            f"runner_{os.path.basename(prob_dir)}", runner_file)
-        mod  = importlib.util.module_from_spec(spec)
+            f"runner_{os.path.basename(prob_dir)}", runner_file
+        )
+        mod = importlib.util.module_from_spec(spec)
         try:
             spec.loader.exec_module(mod)
             tests = mod.run_tests(student_file, prob_dir)
         except Exception as e:
-            
+
             return {
                 "tests": [],
                 "all_passed": False,
@@ -590,13 +663,14 @@ class EVALUEITOR(ctk.CTk):
             }
 
         passed = sum(1 for t in tests if t.get("passed"))
-        total  = len(tests)
+        total = len(tests)
         return {
             "tests": tests,
             "all_passed": passed == total,
             "passed_count": passed,
             "total_count": total,
         }
+
     # ─────────────────────────────────────────────
     #  TIMER
     # ─────────────────────────────────────────────
@@ -645,12 +719,14 @@ class EVALUEITOR(ctk.CTk):
     def _confirm_submit(self):
         win = ctk.CTkToplevel(self)
         win.title("Entregar")
-        win.geometry("340x160")
+        win.after(200, lambda: win.iconbitmap("./assets/panda.ico"))
+        win.geometry("320x200")
+        win.minsize(300, 180)
         win.grab_set()
         ctk.CTkLabel(
             win,
             text="¿Entregar el examen?",
-            font=ctk.CTkFont("Courier New", 13, "bold"),
+            font=ctk.CTkFont("Courier New", 18, "bold"),
             text_color=ORANGE,
         ).pack(pady=(24, 8))
         ctk.CTkLabel(
@@ -683,12 +759,14 @@ class EVALUEITOR(ctk.CTk):
     def _confirm_giveup(self):
         win = ctk.CTkToplevel(self)
         win.title("Rendirse")
-        win.geometry("340x160")
+        win.after(200, lambda: win.iconbitmap("./assets/panda.ico"))
+        win.geometry("320x200")
+        win.minsize(300, 180)
         win.grab_set()
         ctk.CTkLabel(
             win,
             text="¿Rendirse?",
-            font=ctk.CTkFont("Courier New", 13, "bold"),
+            font=ctk.CTkFont("Courier New", 18, "bold"),
             text_color=RED,
         ).pack(pady=(24, 8))
         ctk.CTkLabel(
@@ -728,12 +806,17 @@ class EVALUEITOR(ctk.CTk):
         self._build_result_screen()
 
     def _build_result_screen(self):
+        self.geometry("950x620")
+        self.minsize(850, 550)
+        try:
+            self.iconbitmap("./assets/panda.ico")
+        except Exception:
+            pass
         self._clear()
         elapsed = int(time.time() - self.exam_start)
         h = elapsed // 3600
         m = (elapsed % 3600) // 60
         s = elapsed % 60
-
         ctk.CTkLabel(
             self,
             text="RESULTADO FINAL",
@@ -836,7 +919,11 @@ class EVALUEITOR(ctk.CTk):
             font=ctk.CTkFont("Courier New", 11, "bold"),
             width=180,
             height=36,
-            command=self._build_home,
+            command=lambda: [
+                self.geometry("720x480"),
+                self.minsize(680, 440),
+                self._build_home(),
+            ],
         ).pack(pady=(0, 16))
 
     # ─────────────────────────────────────────────

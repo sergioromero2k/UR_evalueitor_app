@@ -18,11 +18,24 @@ class AntiCheat:
         self.violations = []
         self._last = 0
 
+    BANNED = [
+        "pip install",
+        "import requests",
+        "import openai",
+        "import anthropic",
+        "import urllib.request",
+        "import httpx",
+        "import aiohttp",
+        "subprocess.run",
+        "subprocess.call",
+        "os.system",
+    ]
+
     def check_code(self, code):
         code_lower = code.lower()
         for b in BANNED:
             if b in code_lower:
-                msg = f"[{time.strftime('%H:%M:%S')}] Import prohibido detectado: '{b}'"
+                msg = f"[{time.strftime('%H:%M:%S')}] Import prohibido: '{b}'"
                 if msg not in self.violations:
                     self.violations.append(msg)
 
