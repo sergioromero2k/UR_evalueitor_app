@@ -1,0 +1,39 @@
+Un sistema meteorológico necesita encontrar la temperatura máxima
+registrada en una serie de mediciones. Dado un listado de temperaturas,
+se pide encontrar el valor máximo usando el paradigma de Divide y
+Vencerás, dividiendo el problema en subproblemas más pequeños.
+
+Debes implementar las tres versiones del algoritmo:
+  - Versión tradicional iterativa
+  - Versión DyV con slicing
+  - Versión DyV eficiente con índices
+
+Entrada:
+  La primera línea contiene un entero N con el número de mediciones.
+  La segunda línea contiene N enteros separados por espacios.
+
+Salida:
+  Un entero con el valor máximo encontrado.
+
+Ejemplo de entrada:
+  6
+  3 1 9 2 7 4
+
+Ejemplo de salida:
+  9
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 6 elementos → maximo 9
+    Test 01: 1 elemento → el mismo
+    Test 02: 5 elementos negativos → el menos negativo
+    Test 03: 8 elementos con repetidos → maximo correcto
+    Test 04: 10 elementos → maximo correcto
+    Test 05: 4 elementos todos iguales → ese valor
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

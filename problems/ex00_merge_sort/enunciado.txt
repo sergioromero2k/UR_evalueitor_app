@@ -1,0 +1,38 @@
+Una biblioteca digital necesita ordenar su catálogo de libros
+por número de serie. Dado un listado desordenado de números de serie,
+se pide ordenarlos de menor a mayor usando el algoritmo de ordenación
+por mezcla (Merge Sort).
+
+El algoritmo debe dividir la lista en dos mitades, ordenar cada mitad
+recursivamente y combinarlas en una sola lista ordenada.
+
+Entrada:
+  La primera línea contiene un entero N con el número de elementos.
+  La segunda línea contiene N enteros separados por espacios.
+
+Salida:
+  Una línea con los elementos ordenados de menor a mayor,
+  separados por espacios.
+
+Ejemplo de entrada:
+  8
+  3 1 4 1 7 9 2 6
+
+Ejemplo de salida:
+  1 1 2 3 4 6 7 9
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 8 elementos → ordenados
+    Test 01: 12 elementos con repetidos → ordenados
+    Test 02: 1 elemento → mismo elemento
+    Test 03: 6 elementos ya ordenados → misma lista
+    Test 04: 6 elementos en orden inverso → ordenados
+    Test 05: 10 elementos con negativos → ordenados
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

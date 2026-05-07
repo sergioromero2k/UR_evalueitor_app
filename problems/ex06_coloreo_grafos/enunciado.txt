@@ -1,0 +1,49 @@
+Una cadena de televisión necesita asignar franjas horarias a sus
+programas. Dos programas no pueden emitirse en la misma franja si
+comparten audiencia (están conectados). Dado el grafo de conflictos
+entre programas y un número máximo de franjas disponibles, se pide
+encontrar una asignación válida usando el mínimo número de franjas.
+
+El algoritmo debe usar Backtracking para encontrar UNA asignación
+válida con M colores (franjas). Si no existe solución con M colores,
+el algoritmo debe indicarlo.
+
+Entrada:
+  La primera línea contiene dos enteros N y M, donde N es el número
+  de programas y M el número máximo de franjas disponibles.
+  Las siguientes N líneas contienen los vecinos de cada nodo
+  separados por espacios. Si un nodo no tiene vecinos, la línea
+  estará vacía.
+
+Salida:
+  Si existe solución: una línea con N enteros separados por espacios
+  indicando la franja asignada a cada programa (franjas desde 1).
+  Si no existe solución: una línea con "NO HAY SOLUCION".
+
+Ejemplo de entrada:
+  4 3
+  1 2 3
+  0
+  0 3
+  0 2
+
+Ejemplo de salida:
+  1 2 2 3
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 4 nodos, 3 colores → solucion valida
+    Test 01: triangulo, 2 colores → NO HAY SOLUCION
+    Test 02: triangulo, 3 colores → solucion valida
+    Test 03: 5 nodos, 3 colores → solucion valida
+    Test 04: grafo completo 4 nodos, 3 colores → NO HAY SOLUCION
+    Test 05: 6 nodos, 3 colores → solucion valida
+
+  ⚠ Si entregas main() o input() → KO automático
+  ⚠ El evaluador valida que la solucion sea correcta,
+    no que sea identica al ejemplo
+─────────────────────────────────────────────────────

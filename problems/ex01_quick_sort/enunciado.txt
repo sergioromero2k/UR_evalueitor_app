@@ -1,0 +1,39 @@
+Un sistema de clasificación de paquetes en una empresa de logística
+necesita ordenar los paquetes por su peso para optimizar la carga.
+Dado un listado de pesos, se pide ordenarlos de menor a mayor usando
+el algoritmo de ordenación rápida (Quick Sort).
+
+El algoritmo debe elegir siempre como pivote el primer elemento
+del subarray, particionar en torno a él y ordenar recursivamente
+cada partición.
+
+Entrada:
+  La primera línea contiene un entero N con el número de paquetes.
+  La segunda línea contiene N enteros separados por espacios.
+
+Salida:
+  Una línea con los pesos ordenados de menor a mayor,
+  separados por espacios.
+
+Ejemplo de entrada:
+  12
+  9 4 17 21 34 6 0 -5 56 14 8 43
+
+Ejemplo de salida:
+  -5 0 4 6 8 9 14 17 21 34 43 56
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 12 elementos con negativos → ordenados
+    Test 01: 6 elementos en orden inverso → ordenados
+    Test 02: 1 elemento → mismo elemento
+    Test 03: 8 elementos con repetidos → ordenados
+    Test 04: 6 elementos ya ordenados → misma lista
+    Test 05: 10 elementos mixtos → ordenados
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

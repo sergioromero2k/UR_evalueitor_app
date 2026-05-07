@@ -1,0 +1,45 @@
+Un viajero debe preparar su maleta para un viaje con límite de peso.
+Quiere maximizar el valor de los objetos que se lleva sin poder
+dividirlos (o los lleva enteros o los deja).
+
+A diferencia de la mochila greedy, aquí no se pueden fraccionar
+objetos. El algoritmo debe explorar todas las combinaciones posibles
+usando Backtracking para encontrar la solución óptima.
+
+Entrada:
+  La primera línea contiene dos enteros N y W, donde N es el número
+  de objetos y W es la capacidad máxima de la maleta.
+  Las siguientes N líneas contienen dos enteros V y P indicando
+  el valor y el peso de cada objeto.
+
+Salida:
+  La primera línea contiene el valor máximo obtenido.
+  La segunda línea contiene los índices de los objetos seleccionados
+  separados por espacios (índice desde 0).
+
+Ejemplo de entrada:
+  4 8
+  3 2
+  5 3
+  6 4
+  10 5
+
+Ejemplo de salida:
+  15
+  1 3
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: 4 objetos, capacidad 8 → valor 15
+    Test 01: 3 objetos, capacidad 5 → valor maximo
+    Test 02: 4 objetos, capacidad 10 → todos caben
+    Test 03: 5 objetos, capacidad 6 → valor maximo
+    Test 04: 3 objetos, capacidad 2 → solo el mas ligero
+    Test 05: 6 objetos, capacidad 15 → valor maximo
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

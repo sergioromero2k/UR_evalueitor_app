@@ -1,0 +1,41 @@
+En el famoso problema de las N reinas, se debe colocar N reinas
+en un tablero de ajedrez de NxN de forma que ninguna reina ataque
+a otra. Dos reinas se atacan si están en la misma fila, columna
+o diagonal.
+
+Se pide encontrar UNA solución válida para N reinas usando
+Backtracking. El algoritmo debe parar en cuanto encuentre
+la primera solución válida.
+
+Entrada:
+  Una línea con un entero N indicando el número de reinas
+  y el tamaño del tablero.
+
+Salida:
+  Una línea con N enteros separados por espacios, donde el
+  entero en la posición i indica la columna donde se coloca
+  la reina de la fila i (columnas numeradas desde 0).
+
+Ejemplo de entrada:
+  8
+
+Ejemplo de salida:
+  0 4 7 5 2 6 1 3
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: N=8 → una solucion valida
+    Test 01: N=4 → una solucion valida
+    Test 02: N=6 → una solucion valida
+    Test 03: N=10 → una solucion valida
+    Test 04: N=12 → una solucion valida
+    Test 05: N=5 → una solucion valida
+
+  ⚠ Si entregas main() o input() → KO automático
+  ⚠ El evaluador valida que la solucion sea correcta,
+    no que sea identica al ejemplo
+─────────────────────────────────────────────────────
