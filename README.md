@@ -88,27 +88,32 @@ Ver cualquier test_runner.py existente como referencia.
 
 ## Algoritmos incluidos
 
-Parcial 1 - Grafos y Greedy:
-* Suele caer 2 de ellos, darle prioridad.
+#### Parcial 1 - Grafos y Greedy
+##### Suele caer 2 de los siguientes, darle prioridad.
 - BFS, DFS, Dijkstra, Prim, Kruskal
-- TopSort, Lexical TopSort
+- TopSort, Lexical TopSort, , Art Points
+
+
+##### Suele caer 1 mayormente, algunas veces 2.
 
 - Scheduling, Waiting Time, Coin Exchange
-- Greedy Knapsack, Art Points
+- Greedy Knapsack
 
-Parcial 2 - Divide y Venceras y Backtracking:
 
-* Suele caer uno de ellos.
+
+#### Parcial 2 - Divide y Venceras y Backtracking
+
+##### Suele caer uno de ellos, porque evalua todo el temario.
 - BFS, DFS, Dijkstra, Prim, Kruskal
-- TopSort, Lexical TopSort
-- Scheduling, Waiting Time, Coin Exchange
-- Greedy Knapsack, Art Points
+- Scheduling, Waiting Time, Coin Exchange, Greedy Knapsack
+- TopSort, Lexical TopSort, Art Points
 
-* Darle prioridad a ello.
-- Merge Sort, Quick Sort
+
+##### Darle prioridad a lo siguiente, caen 2 prob.
+- Merge Sort, Quick Sort, Max Vector
+- Mochila 0/1 BT, N-Queens
 - Binary Search recursivo e iterativo
-- Max Vector
-- Mochila 0/1 BT, N-Queens, Coloreo de Grafos
+- Coloreo de Grafos
 
 ## Contribuir
 
