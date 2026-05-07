@@ -1,0 +1,53 @@
+Un explorador está atrapado en un laberinto y necesita encontrar
+el camino más corto desde la entrada hasta la salida.
+
+El laberinto es una cuadrícula de NxM celdas donde:
+  - 0 indica una celda libre por la que se puede pasar
+  - -1 indica una pared que no se puede atravesar
+
+El explorador empieza en la celda (0,0) y debe llegar a la celda
+(N-1, M-1). Solo puede moverse en horizontal y vertical (no diagonal).
+
+El algoritmo debe encontrar el camino que llegue a la salida con
+el menor número de pasos usando Backtracking, marcando cada celda
+con el número de paso en el que se visita.
+
+Entrada:
+  La primera línea contiene dos enteros N y M con el número de
+  filas y columnas del laberinto.
+  Las siguientes N líneas contienen M enteros separados por espacios
+  con el contenido de cada celda (0 libre, -1 pared).
+
+Salida:
+  El laberinto resuelto donde cada celda libre del camino óptimo
+  contiene el número de paso en el que se visita.
+  Las celdas no usadas contienen 0 y las paredes -1.
+  Cada fila en una línea, valores separados por espacios.
+  Si no hay solución imprime "SIN SALIDA".
+
+Ejemplo de entrada:
+  3 3
+  0 0 0
+  0 -1 0
+  0 0 0
+
+Ejemplo de salida:
+  1 2 3
+  0 -1 4
+  0 0 5
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: laberinto 3x3 con una pared → camino de 5 pasos
+    Test 01: laberinto 3x3 sin paredes → camino directo
+    Test 02: laberinto 4x4 con paredes → camino optimo
+    Test 03: laberinto sin salida → SIN SALIDA
+    Test 04: laberinto 3x4 → camino optimo
+    Test 05: laberinto 4x4 complejo → camino optimo
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────

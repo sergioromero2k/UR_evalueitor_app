@@ -185,7 +185,6 @@ class EVALUEITOR(ctk.CTk):
             "coloreado",
             "laberinto",
         ]
-
         if mode == "p1":
             pool = [p for p in all_p if any(t in p.lower() for t in p1)]
         elif mode == "p2":
@@ -230,7 +229,7 @@ class EVALUEITOR(ctk.CTk):
                         os.remove(os.path.join(root, f))
                     except Exception:
                         pass
-        
+
         for i, prob in enumerate(self.selected_problems):
             folder = os.path.join(ENTREGABLE_DIR, f"ex{i:02d}")
             os.makedirs(folder, exist_ok=True)
@@ -567,13 +566,21 @@ class EVALUEITOR(ctk.CTk):
 
     def _run_with_runner(self, runner_file, student_file, prob_dir):
         import importlib.util
+        import sys
 
-        spec = importlib.util.spec_from_file_location("runner", runner_file)
-        mod = importlib.util.module_from_spec(spec)
+        # Limpiar caché de módulos anteriores
+        for key in list(sys.modules.keys()):
+            if key.startswith("student") or key.startswith("runner"):
+                del sys.modules[key]
+
+        spec = importlib.util.spec_from_file_location(
+            f"runner_{os.path.basename(prob_dir)}", runner_file)
+        mod  = importlib.util.module_from_spec(spec)
         try:
             spec.loader.exec_module(mod)
             tests = mod.run_tests(student_file, prob_dir)
         except Exception as e:
+            
             return {
                 "tests": [],
                 "all_passed": False,
@@ -583,14 +590,13 @@ class EVALUEITOR(ctk.CTk):
             }
 
         passed = sum(1 for t in tests if t.get("passed"))
-        total = len(tests)
+        total  = len(tests)
         return {
             "tests": tests,
             "all_passed": passed == total,
             "passed_count": passed,
             "total_count": total,
         }
-
     # ─────────────────────────────────────────────
     #  TIMER
     # ─────────────────────────────────────────────
