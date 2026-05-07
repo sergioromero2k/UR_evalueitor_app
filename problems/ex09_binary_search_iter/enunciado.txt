@@ -1,0 +1,40 @@
+Un sistema de búsqueda de productos en un almacén necesita encontrar
+rápidamente la posición de un artículo en un catálogo ordenado.
+Dado un catálogo ordenado de menor a mayor y un artículo a buscar,
+se pide encontrar su posición usando búsqueda binaria ITERATIVA.
+
+Si el artículo no existe en el catálogo, devuelve un valor negativo
+indicando la posición donde debería insertarse (negada).
+
+Entrada:
+  La primera línea contiene un entero N con el número de artículos.
+  La segunda línea contiene N enteros ordenados separados por espacios.
+  La tercera línea contiene el entero a buscar.
+
+Salida:
+  Un entero con la posición del elemento si se encuentra.
+  Un entero negativo si no existe (-posicion_donde_iria).
+
+Ejemplo de entrada:
+  7
+  1 3 3 5 6 7 9
+  6
+
+Ejemplo de salida:
+  4
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Escribe SOLO el algoritmo, sin main() ni input()
+  • Tu archivo debe contener únicamente las funciones
+  • Los siguientes tests se usarán para verificar tu solución:
+
+    Test 00: buscar 6 en [1,3,3,5,6,7,9] → posicion 4
+    Test 01: buscar 5 en [1,3,5,7,9] → posicion 2
+    Test 02: buscar 4 en [1,3,5,7,9] → no existe, valor negativo
+    Test 03: buscar 0 en [1,3,5,7,9] → no existe, valor negativo
+    Test 04: buscar 10 en [1,3,5,7,9] → no existe, valor negativo
+    Test 05: buscar 1 en [1,3,5,7,9] → posicion 0
+
+  ⚠ Si entregas main() o input() → KO automático
+─────────────────────────────────────────────────────
