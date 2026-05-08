@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBLEMS_DIR = os.path.join(BASE_DIR, "problems")
 ENTREGABLE_DIR = os.path.join(BASE_DIR, "entregable")
 TRAZAS_DIR = os.path.join(BASE_DIR, "trazas")
-EXAM_SECONDS = 90 * 60
+EXAM_SECONDS = 85 * 60
 
 GREEN = "#00ff41"
 RED = "#ff2222"
@@ -533,11 +533,18 @@ class EVALUEITOR(ctk.CTk):
 
             with open(py_file, "r", encoding="utf-8") as f:
                 code = f.read()
-            self.anticheat.check_code(code)
+            penalty = self.anticheat.check_code(code)
+            if penalty > 0:
+                self.seconds_left = max(0, self.seconds_left - penalty)
+                mins = penalty // 60
+                self.after(
+                    0,
+                    lambda m=mins: self.violation_lbl.configure(
+                        text=f"⚠ -{m} min | {len(self.anticheat.violations)} infraccion(es)"
+                    ),
+                )
+                self._log(f"  ⚠ INFRACCION: -{mins} minutos descontados")
 
-            if len(self.anticheat.violations) >= 3:
-                self.after(0, self._exam_anulado)
-                return
 
             runner_file = os.path.join(prob_dir, "test_runner.py")
             if os.path.exists(runner_file):
@@ -575,66 +582,6 @@ class EVALUEITOR(ctk.CTk):
             )
 
         self._log("─" * 55)
-
-    def _exam_anulado(self):
-        self.timer_running = False
-        self.exam_active = False
-        self.unbind("<FocusOut>")
-        self.geometry("720x480")
-        self._clear()
-
-        ctk.CTkLabel(
-            self,
-            text="EXAMEN ANULADO",
-            font=ctk.CTkFont("Courier New", 36, "bold"),
-            text_color=RED,
-        ).pack(pady=(60, 10))
-        ctk.CTkLabel(
-            self,
-            text="Se han detectado infracciones graves.",
-            font=ctk.CTkFont("Courier New", 11),
-            text_color=GRAY,
-        ).pack()
-        ctk.CTkLabel(
-            self,
-            text="SUSPENSO — Trampa detectada",
-            font=ctk.CTkFont("Courier New", 13, "bold"),
-            text_color=RED,
-        ).pack(pady=(16, 0))
-
-        vf = ctk.CTkFrame(
-            self, fg_color="#220000", corner_radius=8, border_width=1, border_color=RED
-        )
-        vf.pack(padx=40, pady=16, fill="x")
-        ctk.CTkLabel(
-            vf,
-            text="INFRACCIONES:",
-            font=ctk.CTkFont("Courier New", 9, "bold"),
-            text_color=RED,
-        ).pack(anchor="w", padx=12, pady=(8, 4))
-        for v in self.anticheat.violations:
-            ctk.CTkLabel(
-                vf,
-                text=f"  • {v}",
-                font=ctk.CTkFont("Courier New", 9),
-                text_color="#cc4444",
-            ).pack(anchor="w", padx=16)
-        ctk.CTkLabel(vf, text="").pack(pady=4)
-
-        ctk.CTkButton(
-            self,
-            text="↩  NUEVO EXAMEN",
-            fg_color=RED,
-            text_color="#fff",
-            font=ctk.CTkFont("Courier New", 10, "bold"),
-            width=160,
-            height=34,
-            command=lambda: [
-                self.geometry("720x480"),
-                self.minsize(680, 440),
-                self._build_home(),
-            ],
-        ).pack(pady=16)
 
     def _run_with_runner(self, runner_file, student_file, prob_dir):
         import importlib.util
@@ -708,10 +655,14 @@ class EVALUEITOR(ctk.CTk):
     # ─────────────────────────────────────────────
     def _on_focus_out(self, event):
         if self.exam_active and str(event.widget) == str(self):
-            self.anticheat.register_focus_loss()
-            self.violation_lbl.configure(
-                text=f"⚠ {len(self.anticheat.violations)} infracción(es)"
-            )
+            penalty = self.anticheat.register_focus_loss()
+            if penalty > 0:
+                self.seconds_left = max(0, self.seconds_left - penalty)
+                mins = penalty // 60
+                self.violation_lbl.configure(
+                    text=f"⚠ -{mins} min | {len(self.anticheat.violations)} infraccion(es)"
+                )
+                self._log(f"  ⚠ INFRACCION: -{mins} minutos descontados", RED)
 
     # ─────────────────────────────────────────────
     #  ENTREGAR / RENDIRSE
@@ -894,33 +845,40 @@ class EVALUEITOR(ctk.CTk):
                             label = sol_file.replace(".py", "").upper()
                             color_sol = GRAY
 
-                        ctk.CTkLabel(card,
-                                    text=f"  {label}:",
-                                    font=ctk.CTkFont("Courier New", 9, "bold"),
-                                    text_color=color_sol).pack(anchor="w", padx=10, pady=(6, 0))
+                        ctk.CTkLabel(
+                            card,
+                            text=f"  {label}:",
+                            font=ctk.CTkFont("Courier New", 9, "bold"),
+                            text_color=color_sol,
+                        ).pack(anchor="w", padx=10, pady=(6, 0))
 
-                        textbox = ctk.CTkTextbox(card,
-                                                font=ctk.CTkFont("Courier New", 9),
-                                                fg_color="#050505",
-                                                text_color=color_sol,
-                                                height=140,
-                                                corner_radius=4)
+                        textbox = ctk.CTkTextbox(
+                            card,
+                            font=ctk.CTkFont("Courier New", 9),
+                            fg_color="#050505",
+                            text_color=color_sol,
+                            height=140,
+                            corner_radius=4,
+                        )
                         textbox.pack(fill="x", padx=10, pady=(0, 4))
                         textbox.insert("end", sol_code)
                         textbox.configure(state="disabled")
-                                    # Boton copiar
-                        ctk.CTkButton(card,
-                                    text="COPIAR",
-                                    font=ctk.CTkFont("Courier New", 8, "bold"),
-                                    fg_color="transparent",
-                                    border_width=1,
-                                    border_color=color_sol,
-                                    text_color=color_sol,
-                                    width=80, height=22,
-                                    command=lambda c=sol_code: [
-                                        self.clipboard_clear(),
-                                        self.clipboard_append(c),
-                                        ]).pack(anchor="e", padx=10, pady=(0, 8))
+                        # Boton copiar
+                        ctk.CTkButton(
+                            card,
+                            text="COPIAR",
+                            font=ctk.CTkFont("Courier New", 8, "bold"),
+                            fg_color="transparent",
+                            border_width=1,
+                            border_color=color_sol,
+                            text_color=color_sol,
+                            width=80,
+                            height=22,
+                            command=lambda c=sol_code: [
+                                self.clipboard_clear(),
+                                self.clipboard_append(c),
+                            ],
+                        ).pack(anchor="e", padx=10, pady=(0, 8))
 
         total_score = sum(
             int(
