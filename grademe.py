@@ -533,7 +533,7 @@ class EVALUEITOR(ctk.CTk):
 
             with open(py_file, "r", encoding="utf-8") as f:
                 code = f.read()
-            penalty = self.anticheat.check_code(code)
+            penalty = self.anticheat.check_code(code, file_key=py_file)
             if penalty > 0:
                 self.seconds_left = max(0, self.seconds_left - penalty)
                 mins = penalty // 60
