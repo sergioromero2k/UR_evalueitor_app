@@ -91,7 +91,7 @@ Ver cualquier test_runner.py existente como referencia.
 #### Parcial 1 - Grafos y Greedy
 ##### Suele caer 2 de los siguientes, darle prioridad.
 - BFS, DFS, Dijkstra, Prim, Kruskal
-- TopSort, Lexical TopSort, , Art Points
+- TopSort, Lexical TopSort, Art Points
 
 
 ##### Suele caer 1 mayormente, algunas veces 2.
