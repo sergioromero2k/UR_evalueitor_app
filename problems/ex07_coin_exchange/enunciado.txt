@@ -17,9 +17,9 @@ Salida:
   necesarias para devolver el cambio, separadas por espacios.
 
 Ejemplo de entrada:
-  87
-  9
-  50 20 10 5 2 1 0.5 0.2 0.1
+87
+9
+50 20 10 5 2 1 0.5 0.2 0.1
 
 Ejemplo de salida:
   1 1 1 1 1 0 0 0 0

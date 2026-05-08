@@ -20,14 +20,14 @@ Salida:
   El nodo origen tiene distancia 0.
 
 Ejemplo de entrada:
-  5 5
-  1
-  1 2 5
-  1 4 3
-  2 5 1
-  4 2 1
-  4 3 11
-  4 5 6
+5 5
+1
+1 2 5
+1 4 3
+2 5 1
+4 2 1
+4 3 11
+4 5 6
 
 Ejemplo de salida:
   0 4 14 3 5

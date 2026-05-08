@@ -53,8 +53,10 @@ def run_tests(student_file, tests_dir):
         in_path  = os.path.join(tests_dir, test_file)
         out_path = os.path.join(tests_dir, test_file.replace(".in", ".out"))
 
-        with open(in_path)  as f: raw = f.read().split()
-        with open(out_path) as f: expected = f.read().strip()
+        with open(in_path, encoding="utf-8") as f:
+            raw = f.read().split()
+        with open(out_path, encoding="utf-8") as f:
+            expected = f.read().strip()
 
         g, n = build_graph(raw)
 
