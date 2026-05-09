@@ -167,4 +167,12 @@ HELP_CONTENT = {
         "funcion": "labyrinth(lab, best, r, c, k)",
         "estructura": "is_feasible verifica límites y celda==0, is_better compara lab[n][m]<best[n][m]"
     },
+    "Ciclo Hamiltoniano": {
+        "color": "#ff2222",
+        "keywords": ["visitar todas las ciudades", "volver al origen", "ciclo", "todas exactamente una vez", "recorrido completo"],
+        "cuando": "Cuando necesitas encontrar un recorrido que pase por TODOS los nodos exactamente una vez y regrese al inicio.",
+        "truco": "¿Visitar todos los nodos una vez y volver? → HAMILTONIANO. Diferencia con Euler: Hamiltoniano es por NODOS, Euler es por ARISTAS.",
+        "funcion": "hamiltonian_cycle_bt(g, v, sol)",
+        "estructura": "sol=[start], is_feasible verifica que el nodo no esté en sol (salvo el inicio al cerrar ciclo)"
+    },
 }

@@ -1,18 +1,22 @@
-Una compañía eléctrica necesita tender cable para conectar varios
-barrios de una ciudad. El objetivo es conectar todos los barrios
-gastando el mínimo cable posible. A diferencia del problema anterior,
-aquí el algoritmo debe crecer desde un nodo inicial, añadiendo
-siempre la conexión más barata que expanda la red actual.
+El gobierno de una isla remota necesita instalar tuberías para
+llevar agua potable a todos sus pueblos. Cada pueblo debe quedar
+conectado a la red de distribución, pero el presupuesto es limitado,
+así que hay que minimizar la longitud total de tubería instalada.
+
+El algoritmo comienza desde un pueblo cualquiera e incorpora
+siempre el pueblo más barato de conectar a la red actual,
+expandiéndose hasta cubrir toda la isla.
 
 Entrada:
   La primera línea contiene dos enteros N y M, donde N es el número
-  de barrios y M el número de posibles conexiones.
+  de pueblos y M el número de posibles tramos de tubería.
   Las siguientes M líneas contienen tres enteros U V W indicando
-  que existe una posible conexión entre el barrio U y el barrio V
+  que existe un posible tramo entre el pueblo U y el pueblo V
   con coste W.
 
 Salida:
-  Un entero con el coste mínimo total para conectar todos los barrios.
+  Un entero con el coste mínimo total de tubería para conectar
+  todos los pueblos.
 
 Ejemplo de entrada:
   4 5
@@ -31,12 +35,13 @@ INSTRUCCIONES DE ENTREGA:
   • Tu archivo debe contener únicamente las funciones
   • Los siguientes tests se usarán para verificar tu solución:
 
-    Test 00: grafo de 4 nodos, 5 aristas → coste 6
-    Test 01: grafo de 7 nodos, 11 aristas → coste 14
-    Test 02: grafo de 3 nodos, 3 aristas → coste 3
-    Test 03: grafo de 5 nodos, 7 aristas → coste 11
-    Test 04: grafo de 6 nodos, 9 aristas → coste 15
-    Test 05: grafo de 8 nodos, 13 aristas → coste 20
+    Test 00: 4 pueblos, 5 tramos → coste 6
+    Test 01: 7 pueblos, 11 tramos → coste MST
+    Test 02: 3 pueblos, 3 tramos → coste 3
+    Test 03: 5 pueblos, 7 tramos → coste MST
+    Test 04: 6 pueblos, 9 tramos → coste MST
+    Test 05: 8 pueblos, 13 tramos → coste MST
 
   ⚠ Si entregas main() o input() → KO automático
+  ⚠ El pueblo inicial es aleatorio — el coste final siempre es el mismo
 ─────────────────────────────────────────────────────

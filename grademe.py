@@ -7,6 +7,7 @@ import shutil
 import sys
 from evaluator import run_problem, write_traces
 from antitramp import AntiCheat
+from help_content import HELP_CONTENT
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -23,12 +24,14 @@ ORANGE = "#ff8c00"
 BLUE = "#00aaff"
 GRAY = "#888888"
 BG = "#0a0a0a"
+YELLOW = "#ffff00"
+WHITE = "#ffffff"
 
 
 class EVALUEITOR(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Confía en lo que sabes, ¡tú puedes!")
+        self.title("Darth Vader")
         self.iconbitmap("./assets/panda.ico")
         self.geometry("300x550")
         self.minsize(420, 550)
@@ -189,6 +192,7 @@ class EVALUEITOR(ctk.CTk):
             "dijkstra",
             "prim",
             "kruskal",
+            "hamiltonian"
         ]
         if mode == "p1":
             pool = [p for p in all_p if any(t in p.lower() for t in p1)]
@@ -257,6 +261,128 @@ class EVALUEITOR(ctk.CTk):
             py_file = os.path.join(folder, f"ex{i:02d}.py")
             with open(py_file, "w", encoding="utf-8") as f:
                 f.write("# Tu solución aquí:\n\n")
+
+    # ─────────────────────────────────────────────
+    #  MOSTRAR AYUDA
+    # ─────────────────────────────────────────────
+
+    def _show_help(self):
+            win = ctk.CTkToplevel(self)
+            win.title("HELP — Como identificar algoritmos")
+            win.geometry("700x550")
+            win.after(200, lambda: win.iconbitmap("./assets/panda.ico"))
+            win.grab_set()
+
+            ctk.CTkLabel(win, text="GUIA DE ALGORITMOS",
+                        font=ctk.CTkFont("Courier New", 16, "bold"),
+                        text_color=GREEN).pack(pady=(16, 4))
+            ctk.CTkLabel(win, text="Como identificar que algoritmo usar en cada problema",
+                        font=ctk.CTkFont("Courier New", 9),
+                        text_color=GRAY).pack(pady=(0, 10))
+
+            scroll = ctk.CTkScrollableFrame(win, fg_color="transparent")
+            scroll.pack(fill="both", expand=True, padx=12, pady=(0, 12))
+
+            for name, info in HELP_CONTENT.items():
+                card = ctk.CTkFrame(scroll, fg_color="#111111",
+                                    corner_radius=8, border_width=1,
+                                    border_color=info["color"])
+                card.pack(fill="x", pady=4)
+
+                # Header siempre visible
+                header = ctk.CTkFrame(card, fg_color="transparent")
+                header.pack(fill="x")
+
+                ctk.CTkLabel(header, text=f"  {name}",
+                            font=ctk.CTkFont("Courier New", 10, "bold"),
+                            text_color=info["color"]).pack(side="left", padx=10, pady=(8, 8))
+
+                # Frame expandible (oculto por defecto)
+                detail = ctk.CTkFrame(card, fg_color="transparent")
+                detail_visible = [False]
+
+                def toggle(d=detail, v=detail_visible, btn=None):
+                    if v[0]:
+                        d.pack_forget()
+                        v[0] = False
+                        if btn:
+                            btn.configure(text="▼ VER MAS")
+                    else:
+                        d.pack(fill="x")
+                        v[0] = True
+                        if btn:
+                            btn.configure(text="▲ OCULTAR")
+
+                btn_toggle = ctk.CTkButton(header,
+                                        text="▼ VER MAS",
+                                        font=ctk.CTkFont("Courier New", 8, "bold"),
+                                        fg_color="transparent",
+                                        border_width=1,
+                                        border_color=info["color"],
+                                        text_color=info["color"],
+                                        width=90, height=22)
+                btn_toggle.configure(command=lambda d=detail, v=detail_visible, b=btn_toggle: toggle(d, v, b))
+                btn_toggle.pack(side="right", padx=10, pady=(8, 8))
+
+                # Contenido del detalle
+                ctk.CTkLabel(detail, text=f"  {info['cuando']}",
+                            font=ctk.CTkFont("Courier New", 9),
+                            text_color=WHITE,
+                            justify="left",
+                            wraplength=620).pack(anchor="w", padx=10, pady=(0, 2))
+
+                ctk.CTkLabel(detail,
+                            text=f"  TRUCO: {info['truco']}",
+                            font=ctk.CTkFont("Courier New", 9, "bold"),
+                            text_color=YELLOW,
+                            justify="left",
+                            wraplength=620).pack(anchor="w", padx=10, pady=(0, 2))
+
+                keywords = "  PALABRAS CLAVE: " + " | ".join(info["keywords"])
+                ctk.CTkLabel(detail, text=keywords,
+                            font=ctk.CTkFont("Courier New", 8),
+                            text_color=GRAY,
+                            justify="left",
+                            wraplength=620).pack(anchor="w", padx=10, pady=(0, 2))
+
+                ctk.CTkLabel(detail,
+                            text=f"  FUNCION: {info['funcion']}",
+                            font=ctk.CTkFont("Courier New", 8),
+                            text_color=info["color"]).pack(anchor="w", padx=10, pady=(0, 2))
+
+                ctk.CTkLabel(detail,
+                            text=f"  ESTRUCTURA: {info['estructura']}",
+                            font=ctk.CTkFont("Courier New", 8),
+                            text_color=GRAY,
+                            justify="left",
+                            wraplength=620).pack(anchor="w", padx=10, pady=(0, 4))
+
+                todo = f"{name}\n\nCUANDO USAR:\n{info['cuando']}\n\nTRUCO:\n{info['truco']}\n\nPALABRAS CLAVE:\n{' | '.join(info['keywords'])}\n\nFUNCION:\n{info['funcion']}\n\nESTRUCTURA:\n{info['estructura']}"
+
+                ctk.CTkButton(detail,
+                            text="COPIAR",
+                            font=ctk.CTkFont("Courier New", 8, "bold"),
+                            fg_color="transparent",
+                            border_width=1,
+                            border_color=info["color"],
+                            text_color=info["color"],
+                            width=120, height=20,
+                            command=lambda t=todo: [
+                                win.clipboard_clear(),
+                                win.clipboard_append(t)
+                            ]).pack(anchor="e", padx=10, pady=(0, 8))
+        
+            ctk.CTkButton(
+                win,
+                text="CERRAR",
+                fg_color="transparent",
+                border_width=1,
+                border_color=GRAY,
+                text_color=GRAY,
+                width=100,
+                height=28,
+                command=win.destroy,
+            ).pack(pady=(0, 12))
 
     # ─────────────────────────────────────────────
     #  EXAM SCREEN
@@ -461,6 +587,18 @@ class EVALUEITOR(ctk.CTk):
             command=self._confirm_submit,
         ).pack(side="right", padx=4, pady=8)
 
+        ctk.CTkButton(
+            bot,
+            text="? HELP",
+            fg_color="transparent",
+            border_color="#555555",
+            border_width=1,
+            text_color="#555555",
+            font=ctk.CTkFont("Courier New", 9, "bold"),
+            width=80,
+            height=28,
+            command=self._show_help,
+        ).pack(side="left", padx=(4, 0), pady=8)
         # Mostrar enunciado del primero por defecto
         self._show_enunciado(0)
         self._log(
@@ -544,7 +682,6 @@ class EVALUEITOR(ctk.CTk):
                     ),
                 )
                 self._log(f"  ⚠ INFRACCION: -{mins} minutos descontados")
-
 
             runner_file = os.path.join(prob_dir, "test_runner.py")
             if os.path.exists(runner_file):
@@ -785,6 +922,7 @@ class EVALUEITOR(ctk.CTk):
         scroll.pack(fill="both", expand=True, padx=16, pady=10)
 
         correct = 0
+        total_score = 0
         for i, prob in enumerate(self.selected_problems):
             folder = f"ex{i:02d}"
             py_file = os.path.join(ENTREGABLE_DIR, folder, f"{folder}.py")
@@ -804,6 +942,7 @@ class EVALUEITOR(ctk.CTk):
             score = int((passed / total * 20)) if total > 0 else 0
             if ok:
                 correct += 1
+            total_score += score
 
             color = GREEN if ok else RED
             card = ctk.CTkFrame(
@@ -880,25 +1019,7 @@ class EVALUEITOR(ctk.CTk):
                             ],
                         ).pack(anchor="e", padx=10, pady=(0, 8))
 
-        total_score = sum(
-            int(
-                run_problem(
-                    os.path.join(PROBLEMS_DIR, self.selected_problems[i]),
-                    os.path.join(ENTREGABLE_DIR, f"ex{i:02d}", f"ex{i:02d}.py"),
-                    exam_active=False,
-                ).get("passed_count", 0)
-                / max(
-                    run_problem(
-                        os.path.join(PROBLEMS_DIR, self.selected_problems[i]),
-                        os.path.join(ENTREGABLE_DIR, f"ex{i:02d}", f"ex{i:02d}.py"),
-                        exam_active=False,
-                    ).get("total_count", 1),
-                    1,
-                )
-                * 20
-            )
-            for i in range(len(self.selected_problems))
-        )
+
 
         passed_text = "APROBADO 🎉" if correct >= 3 else "SUSPENSO 💀"
         color = GREEN if correct >= 3 else RED
