@@ -2,6 +2,7 @@
 
 Simulador de parcial para la asignatura de Diseno y Analisis de Algoritmos.
 Hecho por un estudiante, para estudiantes. Sin IA, sin servidor, sin cuenta.
+Este simulador trata de problemas random sobre el 1er y 2do parcial, donde solo tenes que identificar el algoritmo del problema y ponerlo, del cual si esta correcto, te dara por OK, sino KO, pasando un par de pruebas.
 
 ## Requisitos
 
