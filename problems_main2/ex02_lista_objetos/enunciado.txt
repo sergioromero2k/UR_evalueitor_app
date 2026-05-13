@@ -1,0 +1,55 @@
+Un astronauta debe preparar su mochila para una misión espacial.
+Tiene una lista de equipos con su nombre, peso y valor científico.
+La nave tiene un límite de peso máximo que puede transportar.
+
+El objetivo es maximizar el valor científico total de los equipos
+seleccionados sin superar el límite de peso. No se pueden dividir
+los equipos — o se llevan enteros o se dejan.
+
+Entrada:
+  La primera línea contiene dos enteros N y W, donde N es el número
+  de equipos y W es el peso máximo permitido.
+  Las siguientes N líneas contienen una cadena S y dos enteros V y P
+  indicando el nombre del equipo, su valor científico y su peso.
+
+Salida:
+  La primera línea contiene el valor científico máximo obtenido.
+  Las siguientes líneas contienen los nombres de los equipos
+  seleccionados en orden alfabético, uno por línea.
+
+Ejemplo de entrada:
+4 8
+Telescopio 10 5
+Camara 5 3
+Sensor 6 4
+Bateria 3 2
+
+Ejemplo de salida:
+  13
+  Bateria
+  Camara
+  Telescopio
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Solo escribe el main — la lectura de datos y llamada al algoritmo
+  • El algoritmo disponible es: knapsack_0_1(data, sol, best_sol, k)
+  • Tu main debe:
+      1. Leer N y W
+      2. Leer N líneas con nombre, valor y peso
+      3. Construir data, sol y best_sol
+      4. Llamar a knapsack_0_1
+      5. Mostrar valor máximo y nombres en orden alfabético
+
+  PATRON:
+    N, W = map(int, input().split())
+    nombres, valores, pesos = [], [], []
+    for _ in range(N):
+        parts = input().split()
+        nombres.append(parts[0])
+        valores.append(int(parts[1]))
+        pesos.append(int(parts[2]))
+
+  ⚠ Solo el main, nada más
+  ⚠ Sin main() suelto — ponlo dentro de if __name__
+─────────────────────────────────────────────────────

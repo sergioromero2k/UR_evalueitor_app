@@ -1,0 +1,50 @@
+Un equipo de rescate necesita llegar a un superviviente atrapado
+en un edificio en llamas. El edificio está representado como una
+cuadrícula donde cada celda puede ser suelo, pared, fuego o el
+superviviente.
+
+Dado el mapa del edificio, encuentra el camino más corto desde
+la entrada hasta el superviviente evitando las paredes y el fuego.
+
+Entrada:
+  La primera línea contiene dos enteros N y M con las dimensiones.
+  Las siguientes N líneas contienen M caracteres separados por espacios:
+    'S' — punto de inicio
+    'T' — objetivo
+    'F' — fuego (no se puede pasar)
+    'W' — pared (no se puede pasar)
+    '.' — suelo transitable
+
+Salida:
+  El mínimo número de pasos para llegar desde S hasta T.
+  Si no es posible, imprime "IMPOSIBLE".
+
+Ejemplo de entrada:
+  4 5
+  S . . W .
+  . W . W .
+  . W . . .
+  . . . W T
+
+Ejemplo de salida:
+  8
+
+─────────────────────────────────────────────────────
+INSTRUCCIONES DE ENTREGA:
+  • Solo escribe el main — la lectura de datos y llamada al algoritmo
+  • El algoritmo disponible es: labyrinth(lab, best, r, c, k)
+  • Tu main debe:
+      1. Leer N y M
+      2. Leer el grid línea a línea
+      3. Localizar S y T
+      4. Construir lab y best
+      5. Llamar a labyrinth y mostrar el resultado
+
+  PATRON:
+    N, M = map(int, input().split())
+    grid = []
+    for _ in range(N):
+        grid.append(input().split())
+
+  ⚠ Solo el main, nada más
+─────────────────────────────────────────────────────

@@ -243,24 +243,30 @@ class EVALUEITOR(ctk.CTk):
                         pass
 
         for i, prob in enumerate(self.selected_problems):
-            folder = os.path.join(ENTREGABLE_DIR, f"ex{i:02d}")
+            folder   = os.path.join(ENTREGABLE_DIR, f"ex{i:02d}")
+            prob_dir = os.path.join(PROBLEMS_DIR, prob)
             os.makedirs(folder, exist_ok=True)
 
-            enunciado_file = os.path.join(PROBLEMS_DIR, prob, "enunciado.txt")
+            enunciado_file = os.path.join(prob_dir, "enunciado.txt")
             enunciado = ""
             if os.path.exists(enunciado_file):
                 with open(enunciado_file, "r", encoding="utf-8") as f:
                     enunciado = f.read()
 
-            # Crear enunciado.txt en la carpeta del entregable
             enunciado_dest = os.path.join(folder, "enunciado.txt")
             with open(enunciado_dest, "w", encoding="utf-8") as f:
                 f.write(enunciado)
 
-            # Crear el .py vacío sin el nombre del algoritmo
             py_file = os.path.join(folder, f"ex{i:02d}.py")
             with open(py_file, "w", encoding="utf-8") as f:
                 f.write("# Tu solución aquí:\n\n")
+
+            # Copiar algoritmo del profesor si existe
+            algo_src = os.path.join(prob_dir, "solutions", "algoritmo.py")
+            algo_dst = os.path.join(folder, "algoritmo.py")
+            if os.path.exists(algo_src):
+                import shutil
+                shutil.copy(algo_src, algo_dst)
 
     # ─────────────────────────────────────────────
     #  MOSTRAR AYUDA
